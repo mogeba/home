@@ -1,0 +1,183 @@
+#
+# .shrc
+#
+echo "loading .shrc"
+
+args ()
+{
+  if [ $# -eq 1 -a "${1}" = "help" ] ; then
+    echo -------
+    echo "SYNOPSIS"
+    echo "  args [help] [arg ...]"
+    echo "DESCRIPTION"
+    echo "  tool for shell script"
+    echo
+  else
+    echo "number of the arguments: $#"
+    for var in "$@"; do
+      echo "${var}"
+    done
+  fi
+}
+
+bak ()
+{
+  if [ $# -eq 0 ]; then
+    find -name "*~" -print -delete
+  else
+    if [ "${1}" = "help" ]; then
+      echo -------
+      echo "SYNOPSIS"
+      echo "  rmbak [help]"
+      echo "DESCRIPTION"
+      echo "  no argument specified, remove ~ files (backup files of emacs)"
+      echo
+    fi
+  fi
+}
+
+see ()
+{
+  if [ $# -eq 0 ] ; then
+    echo -------
+    echo "SYNOPSIS"
+    echo "  see [file ...]"
+    echo "DESCRIPTION"
+    echo "  see the specified file"
+    echo "    or"
+    echo "  list files in the specified directory"
+    echo "  no argument specified, displays this message"
+    echo
+  else
+    for var in "$@" ; do
+      if [ "${var}" != "" ] ; then
+        if [ -d "${var}" ] ; then
+          echo "------- ${var}"
+          ls -l "${var}"
+        else
+          echo "======= ${var}"
+          cat "${var}"
+        fi
+      fi
+    done
+  fi
+}
+
+d ()
+{
+  if [ $# -eq 0 ] ; then
+    echo -------
+    echo "SYNOPSIS"
+    echo "  d [guile|ts|slib]"
+    echo "DESCRIPTION"
+    echo "  download by wget from the web site"
+    echo "    or"
+    echo "  git clone from the repository"
+    echo "  no argument specified, displays this message"
+    echo
+  else
+    for var in "$@" ; do
+      case "${var}" in
+        guile )
+          echo "....... downloading guile"
+          wget http://ftp.gnu.org/gnu/guile/guile-2.2.4.tar.gz
+          break;;
+	ts|ts1.41)
+	  w3m https://sourceforge.net/projects/tinyscheme/files/tinyscheme/tinyscheme-1.41/tinyscheme-1.41.zip
+	  break;;
+	ts1.39 )
+	  git clone https://github.com/dchest/tinyscheme.git tinyscheme-1.39
+	  break;;
+	tsdbg )
+	  git clone http://git.code.sf.net/p/tsdbg/code tsdbg-code
+	  break;;
+        slib )
+          echo "....... downloading slib"
+          wget http://groups.csail.mit.edu/mac/ftpdir/scm/slib-3b5.zip
+          break;;
+        * )
+          echo "....... downloading ${var}"
+          wget "${var}"
+          break;;
+      esac
+    done
+  fi
+}
+
+m ()
+{
+  if [ $# -eq 1 -a "$1" = help ] ; then
+    echo -------
+    echo "SYNOPSIS"
+    echo "  m [help]"
+    echo "  m [directory [options ...] ]"
+    echo "  m . [options ...]"
+    echo "DESCRIPTION"
+    echo "  chdir specified directories and make."
+    echo "  no arguments specified,"
+    echo "    do as current directory specified without make-options."
+  elif [ $# -eq 0 ]; then
+    make
+  else
+    dir="${1}"
+    shift
+    ( cd "${dir}" ; make "$@" )
+  fi
+}
+
+x ()
+{
+  if [ $# -eq 0 ] ; then
+    echo -------
+    echo "SYNOPSIS"
+    echo "  x [command and options]"
+    echo "DESCRPTION"
+    echo "  add current directory to LD_LIBRARY_PATH and execute specified command."
+    echo "  no command specified, displays this message."
+  else
+    pwd=`pwd`
+    LD_LIBRARY_PATH="${pwd}:${LD_LIBRARY_PATH}" "$@"
+  fi
+}
+
+ts ()
+{
+  local tinyscheme="${HOME}/tinyscheme-1.41"
+  local r_flag="0"
+  if [ "${1}" = "help" ] ; then
+    echo -------
+    echo "SYNOPSIS"
+    echo "  ts help"
+    echo "  ts -?"
+    echo "  ts [-r] [file ...]"
+    echo "  ts [-r] -1 file [arg ...]"
+    echo "  ts [-r] -c \"scheme command\" [arg ...]"
+    echo "DESCRPTION"
+    echo "  tinyscheme with rlwrap"
+    echo "  in TINYSCHEMEINIT=${TINYSCHEMEINIT}"
+    echo "  -r option specified,"
+    echo "  in TINYSCHEMEINIT=${tinyscheme}/init.scm"
+    echo "SEE"
+    echo "  ts -?"
+    echo
+    return 0
+  elif [ "${1}" = "-?" ] ; then
+    "${tinyscheme}/scheme" "${1}"
+    return 0
+  elif [ "${1}" = "-r" ] ; then
+    echo "R OPTION SPECIFOIED ======================================="
+    shift
+    r_flag="1"
+  fi
+  if [ ${r_flag} = "1" ] ; then
+    echo "TINYSCHEMEINIT=${tinyscheme}/init.scm"
+    echo ======= CHDIR ${HOME}
+    (cd ; TINYSCHEMEINIT="${tinyscheme}/init.scm" rlwrap -n "${tinyscheme}/scheme" "$@")
+    echo ======= CHDIR `pwd`
+  else
+    echo "TINYSCHEMEINIT=${TINYSCHEMEINIT}"
+    echo ======= CHDIR ${HOME}
+    (cd ; rlwrap -n "${tinyscheme}/scheme" "$@")
+    echo ======= CHDIR `pwd`
+  fi
+}
