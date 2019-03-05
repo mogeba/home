@@ -165,19 +165,18 @@ ts ()
     "${tinyscheme}/scheme" "${1}"
     return 0
   elif [ "${1}" = "-r" ] ; then
-    echo "R OPTION SPECIFOIED ======================================="
     shift
     r_flag="1"
   fi
   if [ ${r_flag} = "1" ] ; then
-    echo "TINYSCHEMEINIT=${tinyscheme}/init.scm"
-    echo ======= CHDIR ${HOME}
+    echo "======= TINYSCHEMEINIT=${tinyscheme}/init.scm"
+    echo "======= CHDIR ${HOME}"
     (cd ; TINYSCHEMEINIT="${tinyscheme}/init.scm" rlwrap -n "${tinyscheme}/scheme" "$@")
-    echo ======= CHDIR `pwd`
+    echo "======= CHDIR `pwd`"
   else
-    echo "TINYSCHEMEINIT=${TINYSCHEMEINIT}"
-    echo ======= CHDIR ${HOME}
+    echo "======= TINYSCHEMEINIT=${TINYSCHEMEINIT}"
+    echo "======= CHDIR ${HOME}"
     (cd ; rlwrap -n "${tinyscheme}/scheme" "$@")
-    echo ======= CHDIR `pwd`
+    echo "======= CHDIR `pwd`"
   fi
 }
