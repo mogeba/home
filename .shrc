@@ -36,6 +36,10 @@ bak ()
   fi
 }
 
+cdhome () { cd "${HOME}/home"; pwd; }
+cdts () { cd "${HOME}/scheme/ts"; pwd; }
+cdts1.41 () { cd "${HOME}/tinyscheme-1.41"; pwd; }
+
 see ()
 {
   if [ $# -eq 0 ] ; then
@@ -85,13 +89,14 @@ d ()
 	  git clone https://github.com/mogeba/scheme-small-programs.git scheme
 	  break;;
 	ts1.41 )
-	  w3m https://sourceforge.net/projects/tinyscheme/files/tinyscheme/tinyscheme-1.41/tinyscheme-1.41.zip
+	  git clone https://github.com/mogeba/tinyscheme-1.41.git
+	  #w3m https://sourceforge.net/projects/tinyscheme/files/tinyscheme/tinyscheme-1.41/tinyscheme-1.41.zip
 	  break;;
 	ts1.39 )
 	  git clone https://github.com/dchest/tinyscheme.git tinyscheme-1.39
 	  break;;
 	tsdbg )
-	  git clone http://git.code.sf.net/p/tsdbg/code tsdbg-code
+	  git clone http://git.code.sf.net/p/tsdbg/code tsdbg
 	  break;;
         slib )
           wget http://groups.csail.mit.edu/mac/ftpdir/scm/slib-3b5.zip
