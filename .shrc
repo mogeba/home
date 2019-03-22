@@ -68,7 +68,7 @@ d ()
   if [ $# -eq 0 ] ; then
     echo -------
     echo "SYNOPSIS"
-    echo "  d [guile|ts|slib]"
+    echo "  d [home|ts|ts1.41|ts1.39|tsdbg|slib|guile]"
     echo "DESCRIPTION"
     echo "  download by wget from the web site"
     echo "    or"
@@ -78,15 +78,13 @@ d ()
   else
     for var in "$@" ; do
       case "${var}" in
-        guile )
-          wget http://ftp.gnu.org/gnu/guile/guile-2.2.4.tar.gz
-          break;;
-	home)
+	home )
 	  git clone https://github.com/mogeba/home.git
-	ts)
+	  break;;
+	ts )
 	  git clone https://github.com/mogeba/scheme-small-programs.git scheme
 	  break;;
-	ts1.41)
+	ts1.41 )
 	  w3m https://sourceforge.net/projects/tinyscheme/files/tinyscheme/tinyscheme-1.41/tinyscheme-1.41.zip
 	  break;;
 	ts1.39 )
@@ -97,6 +95,9 @@ d ()
 	  break;;
         slib )
           wget http://groups.csail.mit.edu/mac/ftpdir/scm/slib-3b5.zip
+          break;;
+        guile )
+          wget http://ftp.gnu.org/gnu/guile/guile-2.2.4.tar.gz
           break;;
         * )
           echo "....... downloading ${var}"
