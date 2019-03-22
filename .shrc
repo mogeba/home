@@ -79,10 +79,14 @@ d ()
     for var in "$@" ; do
       case "${var}" in
         guile )
-          echo "....... downloading guile"
           wget http://ftp.gnu.org/gnu/guile/guile-2.2.4.tar.gz
           break;;
-	ts|ts1.41)
+	home)
+	  git clone https://github.com/mogeba/home.git
+	ts)
+	  git clone https://github.com/mogeba/scheme-small-programs.git scheme
+	  break;;
+	ts1.41)
 	  w3m https://sourceforge.net/projects/tinyscheme/files/tinyscheme/tinyscheme-1.41/tinyscheme-1.41.zip
 	  break;;
 	ts1.39 )
@@ -92,7 +96,6 @@ d ()
 	  git clone http://git.code.sf.net/p/tsdbg/code tsdbg-code
 	  break;;
         slib )
-          echo "....... downloading slib"
           wget http://groups.csail.mit.edu/mac/ftpdir/scm/slib-3b5.zip
           break;;
         * )

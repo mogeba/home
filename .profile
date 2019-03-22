@@ -11,13 +11,13 @@ echo "loading .profile"
 echo ------- exports
 TOP="/data/data/com.termux/files"
 export TOP
-PATH="${HOME}/bin:${PATH}"
+PATH="${HOME}/bin:${HOME}/scheme/ts:${PATH}"
 export PATH
-LD_LIBRARY_PATH="${HOME}/empty:${HOME}/ts-1.41-ext:${HOME}/tinyscheme-1.41:${LD_LIBRARY_PATH}"
+LD_LIBRARY_PATH="${HOME}/empty:${HOME}/scheme/ts:${HOME}/tinyscheme-1.41:${LD_LIBRARY_PATH}"
 export LD_LIBRARY_PATH
-SCHEME_LIBRARY_PATH="${HOME}/empty:${HOME}/ts:${HOME}/ts-1.41-ext:${HOME}/tinyscheme-1.41:${TOP}/usr/share/tinyscheme"
+SCHEME_LIBRARY_PATH="${HOME}/empty:${HOME}/scheme/ts:${HOME}/tinyscheme-1.41:${TOP}/usr/share/tinyscheme"
 export SCHEME_LIBRARY_PATH
-TINYSCHEMEINIT="${HOME}/ts/init.scm"
+TINYSCHEMEINIT="${HOME}/scheme/ts/init.scm"
 export TINYSCHEMEINIT
 ENV="${HOME}/.shrc"
 export ENV
