@@ -36,9 +36,23 @@ bak ()
   fi
 }
 
-cdhome () { cd "${HOME}/home"; pwd; }
-cdts () { cd "${HOME}/scheme/ts"; pwd; }
-cdts1.41 () { cd "${HOME}/tinyscheme-1.41"; pwd; }
+cdhome ()
+{
+  cd "${HOME}/home"
+  pwd
+}
+
+cdts ()
+{
+  cd "${HOME}/scheme/ts"
+  pwd
+}
+
+cdts41 ()
+{
+  cd "${HOME}/tinyscheme-1.41"
+  pwd
+}
 
 see ()
 {

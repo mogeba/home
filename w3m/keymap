@@ -1,0 +1,15 @@
+keymap	q	EXIT
+keymap	r	NEXT_TAB
+keymap	t	TAB_LINK
+keymap	x	ADD_BOOKMARK
+keymap	.	QUIT
+keymap	,	CLOSE_TAB
+
+keymap	m	TAB_MENU
+keymap	p	SEARCH_PREV
+keymap	y	VIEW_BOOKMARK
+
+keymap	C	CHARSET
+
+keymap	N	NEXT
+keymap	P	PREV
