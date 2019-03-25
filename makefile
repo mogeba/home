@@ -1,20 +1,19 @@
-all : shs emacz w3ms bins
+shs   = $(HOME)/.bashrc $(HOME)/.shrc $(HOME)/.profile $(HOME)/.bash_profile
+emacz = $(HOME)/.emacs.d/init.el
+w3ms  = $(HOME)/.w3m/bookmark.html $(HOME)/.w3m/config $(HOME)/.w3m/keymap $(HOME)/.w3m/jee.html
+bins  = $(HOME)/bin/jee
 
-.PHONY: shs emacz w3ms bins
-shs   : $(HOME)/.bashrc $(HOME)/.shrc $(HOME)/.profile $(HOME)/.bash_profile
-emacz : $(HOME)/.emacs.d/init.el
-w3ms  : $(HOME)/.w3m/bookmark.html $(HOME)/.w3m/config $(HOME)/.w3m/keymap
-bins  : $(HOME)/bin/see
+all : pull $(shs) $(emacz) $(w3ms) $(bins)
 
-#$(shs)  : %
-#	cp $< $@
-#$(emacz): emacs/%
-#	cp -n $< $@
-#$(w3ms) : w3m/%
-#	cp -n $< $@
-#$(bins) : bin/%
-#	cp $< $@
+.PHONY: pull push resetw3m
+pull:
+	git pull
+push:
+	git push
+resetw3m:
+	rm -f $(w3ms)
 
+### sh, bash
 $(HOME)/.bashrc           : .bashrc
 	cp $< $@
 $(HOME)/.shrc             : .shrc
@@ -23,13 +22,18 @@ $(HOME)/.profile          : .profile
 	cp $< $@
 $(HOME)/.bash_profile     : .bash_profile
 	cp $< $@
+### emacs
 $(HOME)/.emacs.d/init.el  : emacs/init.el
 	cp -n $< $@
+### w3m
 $(HOME)/.w3m/bookmark.html: w3m/bookmark.html
 	cp -n $< $@
 $(HOME)/.w3m/config       : w3m/config
 	cp -n $< $@
 $(HOME)/.w3m/keymap       : w3m/keymap
 	cp -n $< $@
-$(HOME)/bin/see           : bin/see
+$(HOME)/.w3m/jee.html: w3m/jee.html
+	cp -n $< $@
+### bin
+$(HOME)/bin/jee           : bin/jee
 	cp $< $@

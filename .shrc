@@ -54,6 +54,11 @@ cdts41 ()
   pwd
 }
 
+jee ()
+{
+  w3m -bookmark "${HOME}/.w3m/jee.html" -B
+}
+
 see ()
 {
   if [ $# -eq 0 ] ; then
@@ -146,6 +151,11 @@ m ()
     shift
     ( cd "${dir}" ; make "$@" )
   fi
+}
+
+w ()
+{
+  w3m -B
 }
 
 x ()
