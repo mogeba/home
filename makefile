@@ -3,7 +3,7 @@ emacz = $(HOME)/.emacs.d/init.el
 w3ms  = $(HOME)/.w3m/bookmark.html $(HOME)/.w3m/config $(HOME)/.w3m/keymap $(HOME)/.w3m/jee.html
 bins  = $(HOME)/bin/jee
 
-all : pull $(shs) $(emacz) $(w3ms) $(bins)
+all : $(shs) $(emacz) $(w3ms) $(bins)
 
 .PHONY: pull push resetw3m
 pull:

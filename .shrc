@@ -54,9 +54,30 @@ cdts41 ()
   pwd
 }
 
+w ()
+{
+  local user=`git config --global --get user.name`
+  if [ "${user}" = "mogeba" ] ; then
+    fortune
+    echo -n "Push Enter key to go: "
+    read
+    w3m -bookmark "${HOME}/home/w3m/bookmark.html" -B
+  else
+    w3m -B
+  fi
+}
+
 jee ()
 {
-  w3m -bookmark "${HOME}/.w3m/jee.html" -B
+  local user=`git config --global --get user.name`
+  if [ "${user}" = "mogeba" ] ; then
+    fortune
+    echo -n "Push Enter key to go: "
+    read
+    w3m -bookmark "${HOME}/home/w3m/jee.html" -B
+  else
+    w3m -bookmark "${HOME}/.w3m/jee.html" -B
+  fi
 }
 
 see ()
@@ -151,11 +172,6 @@ m ()
     shift
     ( cd "${dir}" ; make "$@" )
   fi
-}
-
-w ()
-{
-  w3m -B
 }
 
 x ()
