@@ -159,29 +159,30 @@ x ()
     echo "  no command specified, displays this message."
   else
     pwd=`pwd`
+    echo "======= x: LD_LIBRARY_PATH=${pwd}:${LD_LIBRARY_PATH}"
     LD_LIBRARY_PATH="${pwd}:${LD_LIBRARY_PATH}" "$@"
   fi
 }
 
-ts ()
+t ()
 {
   local tinyscheme="${HOME}/tinyscheme-1.41"
   local r_flag="0"
   if [ "${1}" = "help" ] ; then
     echo -------
     echo "SYNOPSIS"
-    echo "  ts help"
-    echo "  ts -?"
-    echo "  ts [-r] [file ...]"
-    echo "  ts [-r] -1 file [arg ...]"
-    echo "  ts [-r] -c \"scheme command\" [arg ...]"
+    echo "  t help"
+    echo "  t -?"
+    echo "  t [-r] [file ...]"
+    echo "  t [-r] -1 file [arg ...]"
+    echo "  t [-r] -c \"scheme command\" [arg ...]"
     echo "DESCRPTION"
     echo "  tinyscheme with rlwrap"
     echo "  in TINYSCHEMEINIT=${TINYSCHEMEINIT}"
     echo "  -r option specified,"
     echo "  in TINYSCHEMEINIT=${tinyscheme}/init.scm"
     echo "SEE"
-    echo "  ts -?"
+    echo "  t -?"
     echo
     return 0
   elif [ "${1}" = "-?" ] ; then
@@ -192,14 +193,13 @@ ts ()
     r_flag="1"
   fi
   if [ ${r_flag} = "1" ] ; then
-    echo "======= TINYSCHEMEINIT=${tinyscheme}/init.scm"
-    echo "======= CHDIR ${HOME}"
+    echo "======= t: TINYSCHEMEINIT=${tinyscheme}/init.scm"
+    echo "======= t: CHDIR ${HOME}"
     (cd ; TINYSCHEMEINIT="${tinyscheme}/init.scm" rlwrap -n "${tinyscheme}/scheme" "$@")
-    echo "======= CHDIR `pwd`"
   else
-    echo "======= TINYSCHEMEINIT=${TINYSCHEMEINIT}"
-    echo "======= CHDIR ${HOME}"
+    echo "======= t: TINYSCHEMEINIT=${TINYSCHEMEINIT}"
+    echo "======= t: CHDIR ${HOME}"
     (cd ; rlwrap -n "${tinyscheme}/scheme" "$@")
-    echo "======= CHDIR `pwd`"
   fi
+  echo "======= t: CHDIR `pwd`"
 }
