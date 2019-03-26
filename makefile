@@ -5,13 +5,17 @@ bins  = $(HOME)/bin/jee
 
 all : $(shs) $(emacz) $(w3ms) $(bins)
 
-.PHONY: pull push resetw3m
+.PHONY: pull push resetw3m kotodama
 pull:
 	git pull
 push:
 	git push
 resetw3m:
 	rm -f $(w3ms)
+kotodama:
+	fortunes-jp/fortune.rb fortunes-jp/kotodama.fortune > fortunes-jp/tmp.fortune
+	cp fortunes-jp/tmp.fortune fortunes-jp/kotodama.fortune
+	rm fortunes-jp/tmp.fortune
 
 ### sh, bash
 $(HOME)/.bashrc           : .bashrc

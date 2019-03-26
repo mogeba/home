@@ -1,10 +1,10 @@
 #
 # .bashrc
 #
-echo "loading .shrc from .bashrc"
+echo "------- loading .shrc from .bashrc"
 . ~/.shrc
 
-echo "loading .bashrc"
+echo "------- loading .bashrc"
 
 typetest ()
 {

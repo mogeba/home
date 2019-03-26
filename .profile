@@ -2,11 +2,11 @@
 # .profile for termux/Android
 #
 if [ "${0}" = "sh" -o "${0}" = "dash" -o "${0%/sh}" != "${0}" -o "${0%/dash}" != "${0}" ] ; then
-  echo "loading .shrc from .profile"
+  echo "------- loading .shrc from .profile"
   . ~/.shrc
 fi
 
-echo "loading .profile"
+echo "------- loading .profile"
 
 echo ------- exports
 PATH="${HOME}/bin:${HOME}/scheme/ts:${PATH}"

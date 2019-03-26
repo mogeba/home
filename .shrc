@@ -1,7 +1,7 @@
 #
 # .shrc
 #
-echo "loading .shrc"
+echo "------- loading .shrc"
 
 args ()
 {
