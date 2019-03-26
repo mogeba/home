@@ -58,7 +58,9 @@ w ()
 {
   local user=`git config --global --get user.name`
   if [ "${user}" = "mogeba" ] ; then
+    echo -e "\033[35m"
     fortune "${HOME}/home/fortunes-jp/goethe.fortune"
+    echo -e "\033[0m"
     echo -n "Push Enter key to go: "
     read
     w3m -bookmark "${HOME}/home/w3m/bookmark.html" -B
@@ -71,7 +73,9 @@ jee ()
 {
   local user=`git config --global --get user.name`
   if [ "${user}" = "mogeba" ] ; then
+    echo -e "\033[35m"
     fortune "${HOME}/home/fortunes-jp/goethe.fortune"
+    echo -e "\033[0m"
     echo -n "Push Enter key to go: "
     read
     w3m -bookmark "${HOME}/home/w3m/jee.html" -B
