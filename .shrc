@@ -48,7 +48,7 @@ cdts ()
   pwd
 }
 
-cdts41 ()
+cdts141 ()
 {
   cd "${HOME}/tinyscheme-1.41"
   pwd
@@ -116,7 +116,7 @@ d ()
   if [ $# -eq 0 ] ; then
     echo -------
     echo "SYNOPSIS"
-    echo "  d [home|ts|ts1.41|ts1.39|tsdbg|slib|guile]"
+    echo "  d [home|scheme|ts1.41|ts1.39|tsdbg|slib|guile]"
     echo "DESCRIPTION"
     echo "  download by wget from the web site"
     echo "    or"
@@ -127,20 +127,42 @@ d ()
     for var in "$@" ; do
       case "${var}" in
 	home )
-	  git clone https://github.com/mogeba/home.git
+	  if [ ! -e "${HOME}/home" ] ; then
+	    git clone https://github.com/mogeba/home.git                  "${HOME}/home"
+	  else
+	    echo "${HOME}/home exists already"
+	  fi
 	  break;;
-	ts )
-	  git clone https://github.com/mogeba/scheme-small-programs.git scheme
+	scheme )
+	  if [ ! -e "${HOME}/scheme" ] ; then
+	    git clone https://github.com/mogeba/scheme-small-programs.git "${HOME}/scheme"
+	  else
+	    echo "${HOME}/scheme exists already"
+	  fi
 	  break;;
-	ts1.41 )
-	  git clone https://github.com/mogeba/tinyscheme-1.41.git
-	  #w3m https://sourceforge.net/projects/tinyscheme/files/tinyscheme/tinyscheme-1.41/tinyscheme-1.41.zip
+	ts141 )
+	  if [ ! -e "${HOME}/tinyscheme-1.41" ] ; then
+	    git clone https://github.com/mogeba/tinyscheme-1.41.git       "${HOME}/tinyscheme-1.41"
+	  else
+	    echo "${HOME}/tinyscheme-1.41 exists already"
+	  fi
 	  break;;
-	ts1.39 )
-	  git clone https://github.com/dchest/tinyscheme.git tinyscheme-1.39
+	ts141sf )
+	  w3m https://sourceforge.net/projects/tinyscheme/files/tinyscheme/tinyscheme-1.41/tinyscheme-1.41.zip
+	  break;;
+	ts139 )
+	  if [ ! -e "${HOME}/tinyscheme-1.39" ] ; then
+	    git clone https://github.com/dchest/tinyscheme.git            "${HOME}/tinyscheme-1.39"
+	  else
+	    echo "${HOME}/tinyscheme-1.39 exists already"
+	  fi
 	  break;;
 	tsdbg )
-	  git clone http://git.code.sf.net/p/tsdbg/code tsdbg
+	  if [ ! -e "${HOME}/tsdbg" ] ; then
+	    git clone http://git.code.sf.net/p/tsdbg/code                 "${HOME}/tsdbg"
+	  else
+	    echo "${HOME}/tsdbg exists already"
+	  fi
 	  break;;
         slib )
           wget http://groups.csail.mit.edu/mac/ftpdir/scm/slib-3b5.zip
@@ -155,6 +177,22 @@ d ()
       esac
     done
   fi
+}
+
+p ()
+{
+    #pkg install git
+    pkg install coreutils
+    pkg install rlwrap
+    pkg install make
+    pkg install clang
+    pkg install ctags
+    pkg install ncurses-dev
+    pkg install emacs
+    pkg install w3m
+    pkg install perl
+    pkg install ruby-dev
+    pkg install fortune
 }
 
 m ()
