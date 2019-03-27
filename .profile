@@ -19,11 +19,11 @@ TINYSCHEMEINIT="${HOME}/scheme/ts/init.scm"
 export TINYSCHEMEINIT
 ENV="${HOME}/.shrc"
 export ENV
-echo "PATH=${PATH}"
-echo "LD_LIBRARY_PATH=${LD_LIBRARY_PATH}"
-echo "SCHEME_LIBRARY_PATH=${SCHEME_LIBRARY_PATH}"
-echo "TINYSCHEMEINIT=${TINYSCHEMEINIT}"
-echo "ENV=${ENV}"
+echo "PATH=\"${PATH}\""
+echo "LD_LIBRARY_PATH=\"${LD_LIBRARY_PATH}\""
+echo "SCHEME_LIBRARY_PATH=\"${SCHEME_LIBRARY_PATH}\""
+echo "TINYSCHEMEINIT=\"${TINYSCHEMEINIT}\""
+echo "ENV=\"${ENV}\""
 
 echo ------- remove "~" files
 bak

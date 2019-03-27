@@ -1,9 +1,9 @@
-shs   = $(HOME)/.bashrc $(HOME)/.shrc $(HOME)/.profile $(HOME)/.bash_profile
+rcs   = $(HOME)/.bashrc $(HOME)/.shrc $(HOME)/.profile $(HOME)/.bash_profile $(HOME)/.git-prompt.sh
 emacz = $(HOME)/.emacs.d/init.el
 w3ms  = $(HOME)/.w3m/bookmark.html $(HOME)/.w3m/config $(HOME)/.w3m/keymap $(HOME)/.w3m/jee.html
 bins  = $(HOME)/bin/jee
 
-all : $(shs) $(emacz) $(w3ms) $(bins)
+all : $(rcs) $(emacz) $(w3ms) $(bins)
 
 .PHONY: pull push resetw3m kotodama
 pull:
@@ -25,6 +25,8 @@ $(HOME)/.shrc             : .shrc
 $(HOME)/.profile          : .profile
 	cp $< $@
 $(HOME)/.bash_profile     : .bash_profile
+	cp $< $@
+$(HOME)/.git-prompt.sh    : .git-prompt.sh
 	cp $< $@
 ### emacs
 $(HOME)/.emacs.d/init.el  : emacs/init.el

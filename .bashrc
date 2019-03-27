@@ -4,6 +4,9 @@
 echo "------- loading .shrc from .bashrc"
 . ~/.shrc
 
+echo "------- loading .shrc from .git-prompt.sh"
+. ~/.git-prompt.sh
+
 echo "------- loading .bashrc"
 
 typetest ()
