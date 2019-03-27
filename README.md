@@ -27,6 +27,7 @@
 ### commands
 
 - sh, dash [.shrc](.shrc)
+
 | commnd | description                                                      |
 |:-------|:-----------------------------------------------------------------|
 | args   | print arguments                                                  |
@@ -36,6 +37,7 @@
 | p      | gather pkg install                                               |
 | m      | make wrapper                                                     |
 | t      | readline-wrapped tinyscheme 1.41 with a few extensions           |
+
 - bash [.bashrc](.bashrc)
 	- typetest inspect variable whether it is specified type
 	- vars     echo name and value of variables
