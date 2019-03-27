@@ -27,21 +27,15 @@
 ### commands
 
 - sh, dash [.shrc](.shrc)
----------------------------------------------------------------------------
-| args | print arguments                                                  |
----------------------------------------------------------------------------
-| bak  | delete ~file(emacs-backup-file)                                  |
----------------------------------------------------------------------------
-| see  | when specified file, cat the file. when specified directory, ls. |
----------------------------------------------------------------------------
-| d    | download                                                         |
----------------------------------------------------------------------------
-| p    | gather pkg install                                               |
----------------------------------------------------------------------------
-| m    | make wrapper                                                     |
----------------------------------------------------------------------------
-| t    | readline-wrapped tinyscheme 1.41 with a few extensions           |
----------------------------------------------------------------------------
+| commnd | description                                                      |
+|:-------|:-----------------------------------------------------------------|
+| args   | print arguments                                                  |
+| bak    | delete ~file(emacs-backup-file)                                  |
+| see    | when specified file, cat the file. when specified directory, ls. |
+| d      | download                                                         |
+| p      | gather pkg install                                               |
+| m      | make wrapper                                                     |
+| t      | readline-wrapped tinyscheme 1.41 with a few extensions           |
 - bash [.bashrc](.bashrc)
 	- typetest inspect variable whether it is specified type
 	- vars     echo name and value of variables
