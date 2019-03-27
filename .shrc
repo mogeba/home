@@ -3,6 +3,11 @@
 #
 echo "------- loading .shrc"
 
+echo ------- variables # exports
+PS1='$ '
+#export PS1
+echo "PS1='${PS1}'"
+
 args ()
 {
   if [ $# -eq 1 -a "${1}" = "help" ] ; then
