@@ -1,10 +1,12 @@
 # home
-## rc files for termux/Android
+## rc files for termux on Android
 
 ### contents
 - ${HOME}/.shrc ${HOME}/.profile ${HOME}/.bashrc ${HOME}/.bash_profile
 - ${HOME}/.emacs.d/init.el
-
+- ${HOME}/.w3m/boolmark.html ${HOME}/.w3m/config ${HOME}/.w3m/keymap
+- fortune data in japanese: goethe.fortune
+- fetch and merge scripts for fortune data in japanese: fortune.rb
 ### load order
 
 - sh, dash
