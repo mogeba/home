@@ -59,6 +59,22 @@ cdts141 ()
   pwd
 }
 
+f ()
+{
+  local flag=0
+  local data="${HOME}/home/fortunes-jp/goethe.fortune"
+  if [ $# -gt 0 ] ; then
+      data="${1}"
+  fi
+  while [ ${flag} -eq 0 ] ; do
+    echo -e "\033[35m"
+    fortune "${data}"
+    echo -e "\033[0m"
+    read -p "Push Enter key to go next or Ctrl-D to stop: " dummy
+    flag=$?
+  done
+}
+
 w ()
 {
   local user=`git config --global --get user.name`

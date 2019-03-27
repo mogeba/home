@@ -48,3 +48,15 @@ vars ()
     bak  help ;
   } | less
 }
+
+select-fortune ()
+{
+  local dir="${PREFIX}/share/games/fortunes"
+  if [ $# -gt 0 ] ; then
+    dir="${1}"
+  fi
+  local files=`ls ${dir}`
+  select var in $files ; do
+    f "${dir}/${var}"
+  done
+}
