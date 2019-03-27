@@ -9,30 +9,39 @@
 
 - sh, dash
 	- login
-		(.profile
-			(.shrc))
+		( [.profile](.profile)
+			( [.shrc](.shrc) ))
 	- every
-		.shrc
+		[.shrc](.shrc)
 
 - bash
 	- login
-		(.bashrc
-			(.shrc))
-		(.bash_profile
-			(.profile)))
+		( ( [.bashrc](.bashrc)
+				( [.shrc](.shrc) ))
+			( [.bash_profile](.bash_profile)
+				( [.profile](.profile) )))
 	- every
-		(.bashrc
-			(.shrc))
+		( [.bashrc](.bashrc)
+			( [.shrc](.shrc) ))
 
 ### commands
 
-- sh, dash
-	- args print arguments
-	- bak  delete ~file(emacs-backup-file)
-	- see  when specified file, cat the file. when specified directory, ls.
-	- d    download
-	- m    make wrapper
-	- ts   tinyscheme wrapper
-
-- bash
-	- not implemented yet
+- sh, dash [.shrc](.shrc)
+---------------------------------------------------------------------------
+| args | print arguments                                                  |
+---------------------------------------------------------------------------
+| bak  | delete ~file(emacs-backup-file)                                  |
+---------------------------------------------------------------------------
+| see  | when specified file, cat the file. when specified directory, ls. |
+---------------------------------------------------------------------------
+| d    | download                                                         |
+---------------------------------------------------------------------------
+| p    | gather pkg install                                               |
+---------------------------------------------------------------------------
+| m    | make wrapper                                                     |
+---------------------------------------------------------------------------
+| t    | readline-wrapped tinyscheme 1.41 with a few extensions           |
+---------------------------------------------------------------------------
+- bash [.bashrc](.bashrc)
+	- typetest inspect variable whether it is specified type
+	- vars     echo name and value of variables
