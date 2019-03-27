@@ -43,4 +43,17 @@
 | command | description |
 |:-|:-|
 | typetest | inspect variable whether it is specified type |
+|| $ ary=(abc 123 xyz) |
+|| $ typetest -a ary |
+|| $ echo $? |
+|| 0 |
 | vars | echo name and value of variables |
+|| $ ary1=(abc 123) |
+|| $ ary2=(xyz) |
+|| $ vars ary1 ary2 |
+|| ary1=(abc 123) |
+|| ary2=(xyz) |
+
+### Snapshots
+- bash
+![termux-begin](termux-begin.png)
