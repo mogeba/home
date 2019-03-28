@@ -9,7 +9,7 @@ fi
 echo "------- loading .profile"
 
 echo ------- exports
-PATH="${HOME}/bin:${HOME}/scheme/ts:${PATH}"
+PATH="${HOME}/scheme/ts:${HOME}/tinyscheme-1.41:${HOME}/bin:${PATH}"
 export PATH
 LD_LIBRARY_PATH="${HOME}/empty:${HOME}/scheme/ts:${HOME}/tinyscheme-1.41:${LD_LIBRARY_PATH}"
 export LD_LIBRARY_PATH
