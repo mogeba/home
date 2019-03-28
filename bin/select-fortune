@@ -2,11 +2,33 @@
 
 . ${HOME}/.bashrc > /dev/null
 
-dir="${PREFIX}/share/games/fortunes"
+args=("${PREFIX}/share/games/fortunes")
+
 if [ $# -gt 0 ] ; then
-  dir="${1}"
+  args=("$@")
 fi
-files=`ls ${dir}`
-select var in $files ; do
-  f "${dir}/${var}"
-done
+
+_select_fortune ()
+{
+  dir="${args[0]}"
+  if [ -r "${dir}" -a -d "${dir}" ] ; then
+    files=`ls ${dir}`
+    select var in $files ; do
+      if [ -r "${dir}/${var}" -a -f "${dir}/${var}" ] ; then
+        f "${dir}/${var}"
+        break
+      fi
+    done
+  fi
+}
+
+if [ "${#args[@]}" -eq 1 ] ; then
+  _select_fortune "${args}"
+else
+  select dir in "${args[@]}" ; do
+    if [ -r "${dir}" -a -d "${dir}" ] ; then
+      _select_fortune "${dir}"  
+      break
+    fi
+  done
+fi

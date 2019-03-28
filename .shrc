@@ -85,6 +85,11 @@ f ()
   done
 }
 
+s ()
+{
+  rlwrap sh "$@"
+}
+
 w ()
 {
   local user=`git config --global --get user.name`

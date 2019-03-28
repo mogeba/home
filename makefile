@@ -1,7 +1,7 @@
 rcs   = $(HOME)/.bashrc $(HOME)/.shrc $(HOME)/.profile $(HOME)/.bash_profile $(HOME)/.git-prompt.sh
 emacz = $(HOME)/.emacs.d/init.el
 w3ms  = $(HOME)/.w3m/bookmark.html $(HOME)/.w3m/config $(HOME)/.w3m/keymap $(HOME)/.w3m/jee.html
-bins  = $(HOME)/bin/select-fortune $(HOME)/bin/jee
+bins  = $(HOME)/bin/merge-fortunes $(HOME)/bin/select-fortune $(HOME)/bin/jee
 
 all : $(rcs) $(emacz) $(w3ms) $(bins)
 
@@ -15,7 +15,7 @@ push:
 resetw3m:
 	rm -f $(w3ms)
 kotodama:
-	fortunes-jp/fortune.rb fortunes-jp/kotodama.fortune > fortunes-jp/tmp.fortune
+	bin/merge-fortunes fortunes-jp/kotodama.fortune > fortunes-jp/tmp.fortune
 	cp fortunes-jp/tmp.fortune fortunes-jp/kotodama.fortune
 	rm fortunes-jp/tmp.fortune
 
@@ -43,6 +43,8 @@ $(HOME)/.w3m/keymap        : w3m/keymap
 $(HOME)/.w3m/jee.html      : w3m/jee.html
 	cp -n $< $@
 ### bin
+$(HOME)/bin/merge-fortunes : bin/merge-fortunes
+	cp $< $@
 $(HOME)/bin/select-fortune : bin/select-fortune
 	cp $< $@
 $(HOME)/bin/jee            : bin/jee
