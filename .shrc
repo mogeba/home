@@ -59,17 +59,27 @@ cdts141 ()
   pwd
 }
 
-f ()
+_f()
 {
-  local flag=0
-  local data="${HOME}/home/fortunes-jp/goethe.fortune"
+  local default_data="${HOME}/home/fortunes-jp/goethe.fortune"
+  local data="${default_data}"
   if [ $# -gt 0 ] ; then
       data="${1}"
   fi
-  while [ ${flag} -eq 0 ] ; do
-    echo -e "\033[35m"
+  "${PREFIX}/bin/echo" -e "\033[35m"
+  if [ -r "${data}" -a -f "${data}" ] ; then
     fortune "${data}"
-    echo -e "\033[0m"
+  else
+    fortune "${default_data}"
+  fi
+  "${PREFIX}/bin/echo" -e "\033[0m"
+}
+
+f ()
+{
+  local flag=0
+  while [ ${flag} -eq 0 ] ; do
+    _f "$@"
     read -p "Push Enter key to go next or Ctrl-D to stop: " dummy
     flag=$?
   done
@@ -79,26 +89,20 @@ w ()
 {
   local user=`git config --global --get user.name`
   if [ "${user}" = "mogeba" ] ; then
-    echo -e "\033[35m"
-    fortune "${HOME}/home/fortunes-jp/goethe.fortune"
-    echo -e "\033[0m"
-    echo -n "Push Enter key to go: "
-    read
+    _f
+    read -p "Push Enter key to go: " dummy
     w3m -bookmark "${HOME}/home/w3m/bookmark.html" -B
   else
     w3m -B
   fi
 }
 
-jee ()
+j ()
 {
   local user=`git config --global --get user.name`
   if [ "${user}" = "mogeba" ] ; then
-    echo -e "\033[35m"
-    fortune "${HOME}/home/fortunes-jp/goethe.fortune"
-    echo -e "\033[0m"
-    echo -n "Push Enter key to go: "
-    read
+    _f
+    read -p "Push Enter key to go: " dummy
     w3m -bookmark "${HOME}/home/w3m/jee.html" -B
   else
     w3m -bookmark "${HOME}/.w3m/jee.html" -B

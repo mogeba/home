@@ -1,0 +1,12 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+. ${HOME}/.bashrc > /dev/null
+
+dir="${PREFIX}/share/games/fortunes"
+if [ $# -gt 0 ] ; then
+  dir="${1}"
+fi
+files=`ls ${dir}`
+select var in $files ; do
+  f "${dir}/${var}"
+done
