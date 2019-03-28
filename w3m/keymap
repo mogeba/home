@@ -1,4 +1,14 @@
-keymap	q	EXIT
+keymap	1	MOUSE_TOGGLE
+keymap	2	DISPLAY_IMAGE
+keymap	3	STOP_IMAGE
+keymap	4	SAVE_IMAGE
+keymap	5	MOVE_LIST_MENU
+keymap	6	EXTERNAL_LINK
+keymap	9	MSGS
+keymap	0	REINIT
+
+keymap	q	PREV_WORD
+keymap	e	PREV_TAB
 keymap	r	NEXT_TAB
 keymap	t	TAB_LINK
 keymap	x	ADD_BOOKMARK
@@ -8,8 +18,11 @@ keymap	,	CLOSE_TAB
 keymap	m	TAB_MENU
 keymap	p	SEARCH_PREV
 keymap	y	VIEW_BOOKMARK
+keymap	\	SEARCH_BACK
 
 keymap	C	CHARSET
 
 keymap	N	NEXT
 keymap	P	PREV
+
+keymap	M-x	COMMAND
