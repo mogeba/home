@@ -11,9 +11,9 @@ echo "------- loading .profile"
 echo ------- exports
 PATH="${HOME}/scheme/ts:${HOME}/tinyscheme-1.41:${HOME}/bin:${PATH}"
 export PATH
-LD_LIBRARY_PATH="${HOME}/empty:${HOME}/scheme/ts:${HOME}/tinyscheme-1.41:${LD_LIBRARY_PATH}"
+LD_LIBRARY_PATH="${HOME}/empty:${HOME}/scheme/ts:${HOME}/tinyscheme-1.41:${PREFIX}/local/lib:${LD_LIBRARY_PATH}"
 export LD_LIBRARY_PATH
-SCHEME_LIBRARY_PATH="${HOME}/empty:${HOME}/scheme/ts:${HOME}/tinyscheme-1.41:${PREFIX}/share/tinyscheme"
+SCHEME_LIBRARY_PATH="${HOME}/empty:${HOME}/scheme/ts:${HOME}/tinyscheme-1.41"
 export SCHEME_LIBRARY_PATH
 TINYSCHEMEINIT="${HOME}/scheme/ts/init.scm"
 export TINYSCHEMEINIT

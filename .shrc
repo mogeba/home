@@ -10,10 +10,12 @@ echo "PS1='${PS1}'"
 
 configure-termux ()
 {
-    cp "${PREFIX}/share/automake-1.16/config.guess" .
-    cp "${PREFIX}/share/automake-1.16/config.sub"   .
-    cp "${PREFIX}/share/automake-1.16/install-sh"   .
-    CONFIG_SHELL="${PREFIX}/bin/sh" sh ./configure --prefix="${PREFIX}/local"
+    if [ "${1}" != "--help" ] ; then
+      cp "${PREFIX}/share/automake-1.16/config.guess" .
+      cp "${PREFIX}/share/automake-1.16/config.sub"   .
+      cp "${PREFIX}/share/automake-1.16/install-sh"   .
+    fi
+    CONFIG_SHELL="${PREFIX}/bin/sh" sh ./configure --prefix="${PREFIX}/local" "$@"
 }
 
 args ()
