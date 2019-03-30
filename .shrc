@@ -8,6 +8,14 @@ PS1='$ '
 #export PS1
 echo "PS1='${PS1}'"
 
+configure-termux ()
+{
+    cp "${PREFIX}/share/automake-1.16/config.guess" .
+    cp "${PREFIX}/share/automake-1.16/config.sub"   .
+    cp "${PREFIX}/share/automake-1.16/install-sh"   .
+    CONFIG_SHELL="${PREFIX}/bin/sh" sh ./configure --prefix="${PREFIX}/local"
+}
+
 args ()
 {
   if [ $# -eq 1 -a "${1}" = "help" ] ; then
@@ -146,7 +154,7 @@ d ()
   if [ $# -eq 0 ] ; then
     echo -------
     echo "SYNOPSIS"
-    echo "  d [home|scheme|ts1.41|ts1.39|tsdbg|slib|guile]"
+    echo "  d [home|scheme|ts1.41|ts1.39|tsdbg|slib|guile|fctx|cunit]"
     echo "DESCRIPTION"
     echo "  download by wget from the web site"
     echo "    or"
@@ -177,6 +185,11 @@ d ()
 	    echo "${HOME}/tinyscheme-1.41 exists already"
 	  fi
 	  break;;
+        fctx )
+	  if [ ! -e "${HOME}/fctx" ] ; then
+            git clone https://github.com/imb/fctx.git                     "${HOME}/fctx"
+	  fi
+          break;;
 	ts141sf )
 	  w3m https://sourceforge.net/projects/tinyscheme/files/tinyscheme/tinyscheme-1.41/tinyscheme-1.41.zip
 	  break;;
@@ -194,6 +207,9 @@ d ()
 	    echo "${HOME}/tsdbg exists already"
 	  fi
 	  break;;
+        cunit )
+          wget http://jaist.dl.sourceforge.net/project/cunit/CUnit/2.1-2/CUnit-2.1-2-src.tar.bz2
+          break;;
         slib )
           wget http://groups.csail.mit.edu/mac/ftpdir/scm/slib-3b5.zip
           break;;
