@@ -10,12 +10,23 @@ echo "PS1='${PS1}'"
 
 configure-termux ()
 {
+  local x="${PREFIX}/share/automake-1.16"
+  if [ -d "${x}" -a -r "${x}" ] ; then
+    cp "${x}/config.guess" .
+    cp "${x}/config.sub"   .
+    cp "${x}/install-sh"   .
     if [ "${1}" != "--help" ] ; then
-      cp "${PREFIX}/share/automake-1.16/config.guess" .
-      cp "${PREFIX}/share/automake-1.16/config.sub"   .
-      cp "${PREFIX}/share/automake-1.16/install-sh"   .
+      echo "Did you git commit ?"
+      read -p "Ctrl-D if you forgot. Enter to configure: " dummy
+      if [ $? -ne 0 ] ; then
+        return 0
+      fi
     fi
     CONFIG_SHELL="${PREFIX}/bin/sh" sh ./configure --prefix="${PREFIX}/local" "$@"
+  else
+    echo "Cannot detect automake ${x}: fix configure-termux in ~/.shrc"
+    return 1
+  fi
 }
 
 args ()
