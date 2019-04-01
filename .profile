@@ -21,12 +21,15 @@ TINYSCHEMEINIT="${HOME}/scheme/ts/init.scm"
 export TINYSCHEMEINIT
 PKG_CONFIG_PATH="${PREFIX}/local/lib/pkgconfig"
 export PKG_CONFIG_PATH
+MANPATH="${PREFIX}/local/share/man"
+export MANPATH
 echo "PATH=\"${PATH}\""
 echo "ENV=\"${ENV}\""
 echo "LD_LIBRARY_PATH=\"${LD_LIBRARY_PATH}\""
 echo "SCHEME_LIBRARY_PATH=\"${SCHEME_LIBRARY_PATH}\""
 echo "TINYSCHEMEINIT=\"${TINYSCHEMEINIT}\""
 echo "PKG_CONFIG_PATH=\"${PKG_CONFIG_PATH}\""
+echo "MANPATH=\"${MANPATH}\""
 
 echo ------- remove "~" files
 bak

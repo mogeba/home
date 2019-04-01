@@ -1,31 +1,42 @@
+MAKE   = make
+CP     = cp
+RM     = rm
+GIT    = git
+
 CC     = gcc
 CFLAGS =
 LFLAGS =
 
-exes    = argv
-objs    = argv.o
-srcs    = argv.c
-headers =
+exes     = argv
+objs     = argv.o
+srcs     = argv.c
+headers  =
 
-.PHONY: all install clean reset
+$(objs): %.o: %.c
+	$(CC) $(CFLAGS) -o $@ -c $<
+
+installs = $(HOME)/bin/argv \
+           $(HOME)/bin/merge-fortunes $(HOME)/bin/select-fortune \
+           $(HOME)/bin/jee
+
+.PHONY: all install uninstall clean reset
 
 all: $(exes)
 
-install: all
-	cp argv           $(HOME)/bin
-	cp merge-fortunes $(HOME)/bin
-	cp select-fortune $(HOME)/bin
-	cp jee            $(HOME)/bin
+install: all $(installs)
+
+uninstall:
+	-$(RM) -f $(installs)
 
 clean:
-	-rm -f $(exes) *.o
+	-$(RM) -f $(exes) *.o
 
-reset: clean
+reset: clean uninstall
 
 kotodama:
 	./merge-fortunes ../fortunes-jp/kotodama.fortune > ../fortunes-jp/tmp.fortune
 	cp ../fortunes-jp/tmp.fortune ../fortunes-jp/kotodama.fortune
 	rm ../fortunes-jp/tmp.fortune
 
-$(objs): %.o: %.c
-	$(CC) $(CFLAGS) -o $@ -c $<
+$(installs): $(HOME)/bin/% : %
+	$(CP) $< $@

@@ -1,15 +1,20 @@
-dir   = $(HOME)/.w3m
-files = $(dir)/bookmark.html $(dir)/config $(dir)/keymap $(dir)/jee.html
+MAKE   = make
+CP     = cp
+RM     = rm
+GIT    = git
+
+dir      = $(HOME)/.w3m
+installs = $(dir)/bookmark.html $(dir)/config $(dir)/keymap $(dir)/jee.html
 
 .PHONY: all install clean reset
-all: $(files)
+all: $(installs)
 
 install: all
 
 clean:
 
 reset: clean
-	-rm -f $(files)
+	-$(RM) -f $(installs)
 
-$(files) : $(dir)/% : %
+$(installs) : $(dir)/% : %
 	cp -n $< $@

@@ -1,15 +1,19 @@
-dir   = $(HOME)/.emacs.d
-files = $(dir)/init.el
+MAKE   = make
+CP     = cp
+RM     = rm
+GIT    = git
+
+installs = $(HOME)/.emacs.d/init.el
 
 .PHONY: all install clean reset
-all: $(files)
+all: $(installs)
 
 install: all
 
 clean:
 
 reset: clean
-	-rm -f $(files)
+	-$(RM) -f $(installs)
 
-$(files) : $(dir)/% : %
-	cp -n $< $@
+$(installs) : $(HOME)/.emacs.d/% : %
+	$(CP) -n $< $@
