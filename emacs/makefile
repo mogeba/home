@@ -1,5 +1,5 @@
-dir   = $(HOME)/.w3m
-files = $(dir)/bookmark.html $(dir)/config $(dir)/keymap $(dir)/jee.html
+dir   = $(HOME)/.emacs.d
+files = $(dir)/init.el
 
 .PHONY: all install clean reset
 all: $(files)
