@@ -12,9 +12,6 @@ objs     = argv.o
 srcs     = argv.c
 headers  =
 
-$(objs): %.o: %.c
-	$(CC) $(CFLAGS) -o $@ -c $<
-
 installs = $(HOME)/bin/argv \
            $(HOME)/bin/merge-fortunes $(HOME)/bin/select-fortune \
            $(HOME)/bin/jee
@@ -37,6 +34,9 @@ kotodama:
 	./merge-fortunes ../fortunes-jp/kotodama.fortune > ../fortunes-jp/tmp.fortune
 	cp ../fortunes-jp/tmp.fortune ../fortunes-jp/kotodama.fortune
 	rm ../fortunes-jp/tmp.fortune
+
+$(objs): %.o: %.c
+	$(CC) $(CFLAGS) -o $@ -c $<
 
 $(installs): $(HOME)/bin/% : %
 	$(CP) $< $@
