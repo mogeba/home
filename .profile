@@ -21,7 +21,7 @@ TINYSCHEMEINIT="${HOME}/scheme/ts/init.scm"
 export TINYSCHEMEINIT
 PKG_CONFIG_PATH="${PREFIX}/local/lib/pkgconfig"
 export PKG_CONFIG_PATH
-MANPATH="${PREFIX}/local/share/man"
+MANPATH="${PREFIX}/local/share/man:${PREFIX}/share/man"
 export MANPATH
 echo "PATH=\"${PATH}\""
 echo "ENV=\"${ENV}\""
