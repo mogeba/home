@@ -164,7 +164,7 @@ d ()
   if [ $# -eq 0 ] ; then
     echo -------
     echo "SYNOPSIS"
-    echo "  d [home|scheme|ts1.41|ts1.39|tsdbg|slib|guile|gauche|fctx|cunit]"
+    echo "  d [home|scheme|ts1.41|ts1.39|tsdbg|slib|guile|gauche|fctx|cunit|pcunit]"
     echo "DESCRIPTION"
     echo "  download by curl from the web site"
     echo "    or"
@@ -197,6 +197,9 @@ d ()
           break;;
         fctx )
           _d "${HOME}/fctx" https://github.com/imb/fctx
+          break;;
+        pcunit )
+          _d "${HOME}/pcunit" https://github.com/katono/pcunit
           break;;
         cunit )
           curl http://jaist.dl.sourceforge.net/project/cunit/CUnit/2.1-2/CUnit-2.1-2-src.tar.bz2
