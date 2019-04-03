@@ -13,7 +13,7 @@ srcs     = argv.c
 headers  =
 
 installs = $(HOME)/bin/argv \
-           $(HOME)/bin/merge-fortunes $(HOME)/bin/select-fortune \
+           $(HOME)/bin/merge-fortunes $(HOME)/bin/select-fortune $(HOME)/bin/select-archive \
            $(HOME)/bin/jee
 
 .PHONY: all install uninstall clean reset

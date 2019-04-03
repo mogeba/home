@@ -2,7 +2,7 @@
 
 . ${HOME}/.bashrc > /dev/null
 
-args=("${PREFIX}/share/games/fortunes")
+args=("${HOME}/storage/downloads")
 
 if [ $# -gt 0 ] ; then
   args+=("$@")
@@ -15,8 +15,18 @@ _select ()
     files=`ls ${dir}`
     select var in $files ; do
       if [ -r "${dir}/${var}" -a -f "${dir}/${var}" ] ; then
-        f "${dir}/${var}"
+        if [ "${var%.tar.gz}" != "${var}" ] ; then
+          tar xvf "${dir}/${var}"
+        elif [ "${var%.tar.bz2}" != "${var}" ] ; then
+          tar xvf "${dir}/${var}"
+        elif [ "${var%.tgz}" != "${var}" ] ; then
+          tar xvf "${dir}/${var}"
+        elif [ "${var%.zip}" != "${var}" ] ; then
+          unzip "${dir}/${var}"
+        fi
         break
+      else
+	echo "SKIP: cannot recognize ${dir}/${var} as archive"
       fi
     done
   fi
