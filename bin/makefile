@@ -7,12 +7,12 @@ CC     = gcc
 CFLAGS =
 LFLAGS =
 
-exes     = argv
-objs     = argv.o
-srcs     = argv.c
+exes     = argv   is-cwd-in-env
+objs     = argv.o is-cwd-in-env.o
+srcs     = argv.c is-cwd-in-env.c
 headers  =
 
-installs = $(HOME)/bin/argv \
+installs = $(HOME)/bin/argv $(HOME)/bin/is-cwd-in-env \
            $(HOME)/bin/merge-fortunes $(HOME)/bin/select-fortune $(HOME)/bin/select-archive \
            $(HOME)/bin/jee
 
@@ -32,8 +32,8 @@ reset: clean uninstall
 
 kotodama:
 	./merge-fortunes ../fortunes-jp/kotodama.fortune > ../fortunes-jp/tmp.fortune
-	cp ../fortunes-jp/tmp.fortune ../fortunes-jp/kotodama.fortune
-	rm ../fortunes-jp/tmp.fortune
+	$(CP) ../fortunes-jp/tmp.fortune ../fortunes-jp/kotodama.fortune
+	$(RM) ../fortunes-jp/tmp.fortune
 
 $(objs): %.o: %.c
 	$(CC) $(CFLAGS) -o $@ -c $<

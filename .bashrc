@@ -10,7 +10,8 @@ echo "------- loading .git-prompt.sh from .bashrc"
 echo "------- loading .bashrc"
 
 echo ------- variables #exports
-PS1='\n\[\e[30m\e[44m\] \D{%Y/%m/%d %H:%M:%S} \[\e[30m\e[46m\] \w \[\e[30m\e[42m\]$(__git_ps1 " %s ")\[\e[0m\]\n\$ '
+#PS1='\n\[\e[30m\e[44m\] \D{%Y/%m/%d %H:%M:%S} \[\e[30m\e[46m\] \w \[\e[30m\e[42m\]$(__git_ps1 " %s ")\[\e[30m\e[43m\]$(is-cwd-in-env PATH LD_LIBRARY_PATH SCHEME_LIBRARY_PATH)\[\e[0m\]\n\$ '
+PS1='\n\[\e[30m\e[44m\] \w \[\e[42m\]$(__git_ps1 " %s ")\[\e[43m\]$(is-cwd-in-env PATH LD_LIBRARY_PATH SCHEME_LIBRARY_PATH)\[\e[0m\]\n\$ '
 #export PS1
 echo "PS1='${PS1}'"
 
