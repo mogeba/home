@@ -17,4 +17,4 @@ reset: clean
 	-$(RM) -f $(installs)
 
 $(installs) : $(dir)/% : %
-	cp -n $< $@
+	$(CP) -n $< $@
