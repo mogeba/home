@@ -1,9 +1,5 @@
-MAKE   = make
-CP     = cp
-RM     = rm
-GIT    = git
+include ../Makefile.inc
 
-CC     = gcc
 CFLAGS =
 LFLAGS =
 

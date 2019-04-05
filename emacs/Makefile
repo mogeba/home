@@ -1,7 +1,4 @@
-MAKE   = make
-CP     = cp
-RM     = rm
-GIT    = git
+include ../Makefile.inc
 
 installs = $(HOME)/.emacs.d/init.el
 

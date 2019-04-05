@@ -1,7 +1,4 @@
-MAKE   = make
-CP     = cp
-RM     = rm
-GIT    = git
+include ../Makefile.inc
 
 dir      = $(HOME)/.w3m
 installs = $(dir)/bookmark.html $(dir)/config $(dir)/keymap $(dir)/jee.html

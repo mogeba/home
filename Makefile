@@ -1,7 +1,4 @@
-MAKE   = make
-CP     = cp
-RM     = rm
-GIT    = git
+include Makefile.inc
 
 installs = $(HOME)/.bashrc $(HOME)/.shrc $(HOME)/.profile $(HOME)/.bash_profile $(HOME)/.git-prompt.sh
 
