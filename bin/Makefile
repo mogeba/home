@@ -9,8 +9,7 @@ srcs     = argv.c is-cwd-in-env.c
 headers  =
 
 installs = $(HOME)/bin/argv $(HOME)/bin/is-cwd-in-env \
-           $(HOME)/bin/merge-fortunes $(HOME)/bin/select-fortune $(HOME)/bin/select-archive \
-           $(HOME)/bin/jee
+           $(HOME)/bin/merge-fortunes $(HOME)/bin/select-fortune $(HOME)/bin/select-archive
 
 .PHONY: all install uninstall clean reset
 

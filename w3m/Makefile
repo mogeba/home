@@ -1,7 +1,7 @@
 include ../Makefile.inc
 
 dir      = $(HOME)/.w3m
-installs = $(dir)/bookmark.html $(dir)/config $(dir)/keymap $(dir)/jee.html
+installs = $(dir)/bookmark.html $(dir)/config $(dir)/keymap
 
 .PHONY: all install clean reset
 all: $(installs)

@@ -19,12 +19,13 @@ reset: clean
 	$(MAKE) reset -C bin
 	$(MAKE) reset -C emacs
 	$(MAKE) reset -C w3m
-	-$(RM) -f $(installs)
 
 pull:
 	$(GIT) pull
+
 push:
 	$(GIT) push
+
 kotodama:
 	$(MAKE) kotodama -C bin
 

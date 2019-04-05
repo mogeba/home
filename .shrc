@@ -62,7 +62,7 @@ bak ()
   fi
 }
 
-cdg ()
+ssg ()
 {
   cd $"${HOME}/storage/shared/Git"
   pwd
@@ -105,21 +105,18 @@ w ()
   if [ "${user}" = "mogeba" ] ; then
     _f
     read -p "Push Enter key to go: " dummy
-    w3m -bookmark "${HOME}/home/w3m/bookmark.html" -B
+    if [ $? -ne 0 ] ; then return -1 ; fi
+    if [ $# -gt 0 ] ; then
+      w3m -bookmark "${HOME}/home/w3m/bookmark.html" "$@"
+    else
+      w3m -bookmark "${HOME}/home/w3m/bookmark.html" -B
+    fi
   else
-    w3m -B
-  fi
-}
-
-j ()
-{
-  local user=`git config --global --get user.name`
-  if [ "${user}" = "mogeba" ] ; then
-    _f
-    read -p "Push Enter key to go: " dummy
-    w3m -bookmark "${HOME}/home/w3m/jee.html" -B
-  else
-    w3m -bookmark "${HOME}/.w3m/jee.html" -B
+    if [ $# -gt 0 ] ; then
+      w3m "$@"
+    else
+      w3m -B
+    fi
   fi
 }
 
@@ -148,6 +145,11 @@ see ()
       fi
     done
   fi
+}
+
+jee ()
+{
+  see "$@" | less
 }
 
 _d ()

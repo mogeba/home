@@ -9,7 +9,7 @@ fi
 echo "------- loading .profile"
 
 echo ------- exports
-PATH="${HOME}/scheme/ts:${HOME}/tinyscheme-1.41:${HOME}/bin:${PATH}"
+PATH="${HOME}/scheme/ts:${HOME}/tinyscheme-1.41:${HOME}/bin:${PREFIX}/local/bin:${PATH}"
 export PATH
 ENV="${HOME}/.shrc"
 export ENV
